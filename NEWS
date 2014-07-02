@@ -1,0 +1,9 @@
+1.1.1
+ - Fix an issue with invalid json in the provided example code.
+
+1.1
+ - Add sonarJSON function for cases where structure is important or data types may vary.
+ - Tweaks and fixes for documentation.
+
+1.0
+ - Initial release for CRAN.
