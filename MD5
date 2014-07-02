@@ -1,0 +1,11 @@
+af6f9448a6a633beb77140e4162a9240 *DESCRIPTION
+cb6f63d7fb1d02a9b88cc036dfa38c26 *NAMESPACE
+739e57cbf4299edc0516ee595c124479 *R/jSonarR.R
+db5b756cd2fa7d0803e85938feea0583 *R/new.SonarConnection.R
+13e6c824029ae6ec089de9502fb3119a *R/sonarAgg.R
+6bd575db78da5cee7508f63fd07ad5d5 *R/sonarCSV.R
+d704ac8e99c4c023197d419c6ae9bf09 *R/sonarFind.R
+0a9ed6755178858b99de0f6106fd3238 *man/jSonarR.Rd
+6d5dfa91481d2ab933afcb97cc087102 *man/new.SonarConnection.Rd
+eaf0c3a36da8a23157268401789330c4 *man/sonarAgg.Rd
+38038a3adb978af058e8d6b49135bd3b *man/sonarFind.Rd
