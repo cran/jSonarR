@@ -12,7 +12,7 @@
 #' and returning their results in R data frames. Usually, data in MongoDB is
 #' only available in the form of a JSON document. jSonarR uses data
 #' processing and conversion capabilities in the jSonar Analytics Platform
-#' and the JSON Studio Gateway (http://www.jsonstudio.com), to convert it to
+#' and the JSON Studio Gateway (\url{http://www.jsonstudio.com}), to convert it to
 #' a tabular format which is easy to use with existing R packages.
 #'
 #' To use jSonarR, you must have access to a server running JSON Studio.
@@ -35,6 +35,7 @@
 #' @seealso JSON Studio \url{http://www.jsonstudio.com}
 #' @import RCurl
 #' @import methods
+#' @import jsonlite
 #' @docType package
 #' @keywords connection database
 #' @name jSonarR

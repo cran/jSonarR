@@ -17,7 +17,7 @@ SonarConnection <- setClass('SonarConnection', slots=c('url'='character', 'param
 #' database.
 #'
 #' The parameters for this function are explained in greater detail in the
-#' JSON Studio help page Using the Gateway.
+#' JSON Studio help page \emph{Using the Gateway}.
 #'
 #' @param url the url where JSON Studio can be accessed
 #' @param host the hostname of the Mongo server, as it would be entered from
@@ -44,6 +44,7 @@ SonarConnection <- setClass('SonarConnection', slots=c('url'='character', 'param
 #' @export
 #' @keywords connection database
 #'
+#' @family connection
 #' @seealso \url{http://jsonstudio.com/wp-content/uploads/2014/04/manual141/_build/html/index.html}
 new.SonarConnection <- function(url, host, db, port=27017, username=NULL, pwd=NULL, sdb=NULL, ssl=FALSE, anyCert=FALSE, krb=FALSE, mapCredentials=FALSE, secondaryPref=FALSE)
 {
@@ -69,4 +70,45 @@ new.SonarConnection <- function(url, host, db, port=27017, username=NULL, pwd=NU
     );
 
     return(connection);
+}
+
+sonarGatewayURL <- function(connection, queryName, queryCol, output='csv', type='find', bind=list(), limit=NULL, publishedBy=NULL)
+{
+    if(! inherits(connection, 'SonarConnection'))
+        stop("connection must be a SonarConnection. Create one with new.SonarConnection");
+
+    gatewayParams <- list(
+        'output' = output,
+        'type' = type,
+        'name' = queryName,
+        'col' = queryCol
+    );
+    
+    gatewayParams[['limit']] <- limit;
+    gatewayParams[['published_by']] <- publishedBy;
+
+    # encode bind parameter types
+    for(key in names(bind)) {
+        bindParam <- paste('bind', key, sep='.');
+        bindValue <- encodeBindValue(bind[[key]]);
+        gatewayParams[[bindParam]] <- bindValue;
+    }
+
+    queryArgs <- paste(names(gatewayParams), gatewayParams, sep='=', collapse='&');
+    allArgs <- paste(connection@params, queryArgs, sep='&');
+    gatewayURL <- sprintf("%s/Gateway?%s", connection@url, allArgs);
+
+    return(gatewayURL);
+}
+
+encodeBindValue <- function(value)
+{
+    if(inherits(value, 'character'))
+    {
+        return(paste('"', value, '"', sep=''));
+    }
+    else
+    {
+        return(value);
+    }
 }

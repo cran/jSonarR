@@ -12,7 +12,7 @@
 #' Finder, and get the result in a data frame.
 #'
 #' The parameters for this function are explained in greater detail in the
-#' JSON Studio help page Using the Gateway.
+#' JSON Studio help page \emph{Using the Gateway}.
 #'
 #' @param connection a SonarConnection object created with
 #'   \code{\link{new.SonarConnection}}
@@ -24,7 +24,7 @@
 #'   This will be used for the row names in the returned data frame. The
 #'   default is X_id, which is the name of Mongo's _id field (adjusted by
 #'   \code{\link{make.names}}).
-#' @param publishedBy the name of the user which published the API
+#' @param publishedBy the name of the user who we expect published the API
 #' @param colClasses a list of column names and their respective classes, as
 #'   used in \code{\link{read.csv}}. This may be necessary if some columns'
 #'   types are not being detected automatically.
@@ -44,6 +44,8 @@
 #' @export
 #' @keywords database
 #'
+#' @family connection
+#' @family csv
 #' @seealso \url{http://jsonstudio.com/wp-content/uploads/2014/04/manual141/_build/html/index.html}
 sonarFind <- function(connection, queryName, queryCol, bind=list(), limit=NULL, idCol="_id", publishedBy=NULL, colClasses=NA)
 {
